@@ -1,6 +1,6 @@
 import React from "react";
 
-class App extends React.Component {
+class App2 extends React.Component {
     state = {
         count: 0
     };
@@ -21,4 +21,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default App2;

@@ -5,15 +5,17 @@
     <title>React</title>
 </head>
 <body>
-<div id="root">
+<div id="root"></div>
 </body>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    function Btn( { banana, changeValue} ) {
+    function Btn( { banana, changeValue, fontSize} ) {
         console.log(banana, "was rendered");
-        return <button
+        return (
+            <button
             onClick={changeValue}
             style={{
                 backgroundColor: "tomato",
@@ -21,18 +23,24 @@
                 padding: "10px 20px",
                 border: 0,
                 borderRadius: 10,
+                fontSize: fontSize
             }}
         >
             {banana}</button>
+        );
     }
-
+    Btn.PropTypes = {
+        text: PropTypes.string,
+        fontSize: PropTypes.number,
+    }
     const MemorizedBtn = React.memo(Btn);
     function APP() {
         const [value, setValue] = React.useState("Save Changes");
         const changeValue = () => setValue("Revert Changes");
         return (
             <div>
-                <MemorizedBtn banana={value} changeValue={changeValue} />
+                <MemorizedBtn banana={value} changeValue={changeValue}
+                fontSize={18}/>
                 <MemorizedBtn banana="Continue" />
             </div>
         );
