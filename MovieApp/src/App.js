@@ -1,6 +1,7 @@
 import Button from "./Button";
 import styles from "./App.module.css";
 import {useState, useEffect} from "react";
+import App2 from "./App2";
 
 function App() {
     const [counter, setValue] = useState(0);
@@ -29,6 +30,7 @@ function App() {
         <h1>{counter}</h1>
           <button onClick={onClick}>click me!!</button>
         {/*<Button  text={"Continue"} />*/}
+      <App2 />
       </div>
   );
 }
